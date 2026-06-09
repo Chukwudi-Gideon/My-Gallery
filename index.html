@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Photo Gallery</title>
+</head>
+<body>
+
+    <header>
+        <h1>My Photo Gallery</h1>
+        <p>A collection of beautiful moments and professional milestones</p>
+    </header>
+
+    <main>
+        <section class="gallery">
+
+            <div class="gallery-item">
+                <img src="Images/corparate-1.jpg" alt="A professional headshot in corporate attire">
+                <div class="caption">Corporate Headshot</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Images/corprate-2.jpg" alt="A confident professional posing in business wear">
+                <div class="caption">Business Ready</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://picsum.photos/500/500?2" alt="Image displayed by picsum">
+                <div class="caption">Scenic Landscapes</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Images/home-selfie.jpg" alt="A casual and relaxed selfie taken indoors at home">
+                <div class="caption">Relaxing at Home</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://picsum.photos/500/500?4" alt="Image displayed by picsum">
+                <div class="caption">Atmospheric Moods</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Images/traditional-wear.jpg" alt="A portrait featuring elegant traditional cultural attire">
+                <div class="caption">Cultural Elegance</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://picsum.photos/500/500?6" alt="Image displayed by picsum">
+                <div class="caption">Chasing the Sun</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="Images/work-space.jpg" alt="A clean, organized desk setup with a computer and office supplies">
+                <div class="caption">The Creative Workspace</div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- The Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <img src="" alt="Enlarged Image" id="lightbox-img">
+    </div>
+
+    <footer>
+        <p>&copy; 2026 My Gallery</p>
+    </footer>
+
+    <!-- JavaScript for the Lightbox functionality -->
+    <script>
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('lightbox-close');
+
+        // Open lightbox when an image is clicked
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxImg.src = item.src; 
+                lightboxImg.alt = item.alt; 
+                lightbox.classList.add('active');
+            });
+        });
+
+        
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                lightbox.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html>
